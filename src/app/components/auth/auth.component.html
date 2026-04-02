@@ -1,0 +1,68 @@
+<div class="from-container">
+  <div class="choose-option">
+    <button type="button" [class.active]="isLoginMode" (click)="switchMode(true)">Login</button>
+    <button type="button" [class.active]="!isLoginMode" (click)="switchMode(false)">Signup</button>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="f-group" *ngIf="!isLoginMode">
+      <label>Username</label>
+      <input
+        type="text"
+        [(ngModel)]="authData.username"
+        name="username"
+        required
+        (input)="clearMessages()"
+      />
+    </div>
+
+    <div class="f-group">
+      <label>{{ isLoginMode ? 'Email or Username' : 'Email' }}</label>
+      <input
+        [type]="isLoginMode ? 'text' : 'email'"
+        [(ngModel)]="authData.email"
+        name="email"
+        required
+        (input)="clearMessages()"
+      />
+    </div>
+
+    <div class="f-group">
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="authData.password"
+        name="password"
+        required
+        (input)="clearMessages()"
+      />
+    </div>
+
+    <div class="f-group" *ngIf="!isLoginMode">
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        [(ngModel)]="authData.confirmPassword"
+        name="confirmPassword"
+        required
+        (input)="clearMessages()"
+      />
+    </div>
+
+    <div *ngIf="errorMessage" class="error-alert">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-alert">{{ successMessage }}</div>
+
+    <button type="submit" class="submit-btn">
+      {{ isLoginMode ? 'Login' : 'Create Account' }}
+    </button>
+  </form>
+
+  <div class="divider">
+    <span>OR</span>
+  </div>
+
+  <button type="button" class="google-btn" (click)="loginWithGoogle()">
+    <img src="/google-icon.png" alt="Google" class="google-icon-img" />
+    <span>Continue with Google</span>
+  </button>
+</div>
