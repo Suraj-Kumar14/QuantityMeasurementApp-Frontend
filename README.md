@@ -1,6 +1,5 @@
-# 🚀 Quantity Measurement Application – Frontend
-
-## 📏 UI Development | Clean Code | Scalable Architecture
+# 🚀 Quantity Measurement Application – Frontend  
+## 📏 UI Development | Clean Code | Scalable Architecture  
 
 ---
 
@@ -8,9 +7,9 @@
 
 The **Quantity Measurement Application (Frontend)** is designed to provide a clean and interactive UI for performing:
 
-- Unit comparison
-- Unit conversion
-- Arithmetic operations on quantities
+- Unit comparison  
+- Unit conversion  
+- Arithmetic operations on quantities  
 
 This frontend is developed in **two different approaches**:
 
@@ -21,11 +20,11 @@ This frontend is developed in **two different approaches**:
 
 # 🧠 Development Principles
 
-- ✅ Clean Code Practices
-- ✅ DRY (Don't Repeat Yourself)
-- ✅ Modular Structure
-- ✅ Feature-Based Development
-- ✅ Scalable Architecture
+- ✅ Clean Code Practices  
+- ✅ DRY (Don't Repeat Yourself)  
+- ✅ Modular Structure  
+- ✅ Feature-Based Development  
+- ✅ Scalable Architecture  
 
 ---
 
@@ -52,74 +51,6 @@ UI Update
 
 ---
 
-# 📂 Frontend Branch Implementations
-
----
-
-## 🌐 Branch: `feature/frontend-vanilla-html-css-js`
-
-### 🎯 Objective
-
-Build the application using **core web technologies** to strengthen fundamentals and understand low-level UI handling.
-
----
-
-### 🛠️ Tech Stack
-
-- HTML5
-- CSS3 (Flexbox, Grid)
-- JavaScript (ES6+)
-- JSON Server (Mock Backend)
-
----
-
-### 📁 Project Structure
-
-```
-frontend/
-│
-├── index.html
-├── css/
-│   └── styles.css
-├── js/
-│   ├── app.js
-│   ├── api.js
-│   └── utils.js
-└── data/
-    └── db.json
-```
-
----
-
-### ✨ Features
-
-- 📏 Unit Conversion UI
-- 🔄 Dynamic DOM Updates
-- 🌐 API Integration (Fetch)
-- 🎯 Input Validation
-- 📱 Responsive Design
-
----
-
-### 🚀 How to Run
-
-```
-git checkout feature/frontend-vanilla-html-css-js
-npx json-server --watch data/db.json --port 3000
-Open index.html in browser
-```
-
----
-
-### 🔥 Key Learnings
-
-- DOM Manipulation
-- Event Handling
-- API Integration without frameworks
-- Code modularization in JavaScript
-
----
-
 ## ⚡ Branch: `feature/frontend-angular`
 
 ### 🎯 Objective
@@ -130,11 +61,11 @@ Build a **scalable and maintainable frontend** using Angular with TypeScript.
 
 ### 🛠️ Tech Stack
 
-- Angular
-- TypeScript
-- RxJS
-- Angular CLI
-- REST APIs
+- Angular  
+- TypeScript  
+- RxJS  
+- Angular CLI  
+- REST APIs  
 
 ---
 
@@ -158,11 +89,11 @@ src/
 
 ### ✨ Features
 
-- ⚡ Component-Based Architecture
-- 🔄 Reactive Programming (RxJS)
-- 📏 Unit Conversion System
-- 🌐 API Integration
-- 🧩 Modular Design
+- ⚡ Component-Based Architecture  
+- 🔄 Reactive Programming (RxJS)  
+- 📏 Unit Conversion System  
+- 🌐 API Integration  
+- 🧩 Modular Design  
 
 ---
 
@@ -179,19 +110,19 @@ Open http://localhost:4200
 
 ### 🔥 Key Learnings
 
-- Component-based UI design
-- Service-layer architecture
-- Reactive programming with Observables
-- Scalable frontend structure
+- Component-based UI design  
+- Service-layer architecture  
+- Reactive programming with Observables  
+- Scalable frontend structure  
 
 ---
 
 # 📌 Future Enhancements
 
-- 🔐 Authentication Integration (JWT / OAuth2)
-- 🛡️ Route Guards (Angular)
-- 🎨 UI Improvements (Material / Tailwind)
-- ⚡ Performance Optimization
-- 📦 State Management (NgRx)
+- 🔐 Authentication Integration (JWT / OAuth2)  
+- 🛡️ Route Guards (Angular)  
+- 🎨 UI Improvements (Material / Tailwind)  
+- ⚡ Performance Optimization  
+- 📦 State Management (NgRx)  
 
 ---
