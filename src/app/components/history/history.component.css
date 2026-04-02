@@ -1,0 +1,158 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: #eaebee;
+}
+
+.header-ribbon {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: #4062eb;
+    padding: 18px 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.app-title {
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.header-actions {
+    position: absolute;
+    right: 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.back-btn,
+.logout-btn {
+    background: #121489;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover,
+.logout-btn:hover {
+    background: #2f54eb;
+}
+
+.history-wrapper {
+    max-width: 1200px;
+    margin: 36px auto;
+    padding: 0 24px;
+}
+
+.history-card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 28px;
+}
+
+.history-title {
+    margin: 0 0 20px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #111;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td {
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.history-table th {
+    background: #f8f9fc;
+    font-weight: 800;
+    color: #222;
+}
+
+.history-table tr:hover {
+    background: #f9fbff;
+}
+
+.history-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.cancel-btn {
+    background: #121489;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 20px rgba(74, 108, 247, 0.25);
+}
+
+.cancel-btn:hover {
+    background: #2f54eb;
+}
+
+.error-banner {
+    background-color: #ffeded;
+    color: #d63031;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #fab1a0;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.info-text {
+    text-align: center;
+    padding: 20px 0;
+    color: #666;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .app-title {
+        font-size: 1.1rem;
+    }
+
+    .header-actions {
+        position: static;
+        margin-left: 12px;
+    }
+
+    .header-ribbon {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .history-card {
+        padding: 18px;
+    }
+}

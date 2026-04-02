@@ -1,0 +1,57 @@
+<header class="header">
+  <div class="header-ribbon">
+    <h2 class="app-title">Quantity Measurement App</h2>
+
+    <div class="header-actions">
+      <button class="back-btn" (click)="goToDashboard()">Dashboard</button>
+      <button class="logout-btn" (click)="authService.logout()">Logout</button>
+    </div>
+  </div>
+</header>
+
+<div class="history-wrapper">
+  <div class="history-card">
+    <h3 class="history-title">Operation History</h3>
+
+    <div *ngIf="loading" class="info-text">Loading history...</div>
+    <div *ngIf="error" class="error-banner">{{ error }}</div>
+    <div *ngIf="!loading && !error && historyList.length === 0" class="info-text">
+      No history found.
+    </div>
+
+    <div *ngIf="!loading && historyList.length > 0" class="table-container">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>Operation</th>
+            <th>Type</th>
+            <th>Value 1</th>
+            <th>Unit 1</th>
+            <th>Value 2</th>
+            <th>Unit 2</th>
+            <th>Result</th>
+            <th>Result Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of historyList">
+            <!-- <td>{{ item.id }}</td> -->
+            <td>{{ formatOperation(item.operation) }}</td>
+            <td>{{ item.thisMeasurementType }}</td>
+            <td>{{ item.thisValue }}</td>
+            <td>{{ item.thisUnit }}</td>
+            <td>{{ item.thatValue }}</td>
+            <td>{{ item.thatUnit }}</td>
+            <td>{{ item.resultValue }}</td>
+            <td>{{ item.resultUnit }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="history-footer">
+        <button class="cancel-btn" (click)="goToDashboard()">Cancel</button>
+    </div>
+</div>
+</div>
