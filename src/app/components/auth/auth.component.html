@@ -1,68 +1,95 @@
-<div class="from-container">
-  <div class="choose-option">
-    <button type="button" [class.active]="isLoginMode" (click)="switchMode(true)">Login</button>
-    <button type="button" [class.active]="!isLoginMode" (click)="switchMode(false)">Signup</button>
-  </div>
+<div class="auth-page">
+  <div class="auth-bg-glow glow-1"></div>
+  <div class="auth-bg-glow glow-2"></div>
+  <div class="auth-bg-glow glow-3"></div>
 
-  <form (ngSubmit)="onSubmit()" autocomplete="off">
-    <div class="f-group" *ngIf="!isLoginMode">
-      <label>Username</label>
-      <input
-        type="text"
-        [(ngModel)]="authData.username"
-        name="username"
-        required
-        (input)="clearMessages()"
-      />
+  <div class="auth-floating badge-one">Length</div>
+  <div class="auth-floating badge-two">Weight</div>
+  <div class="auth-floating badge-three">Volume</div>
+  <div class="auth-floating badge-four">Temperature</div>
+
+  <div class="auth-icons icon-ruler">📏</div>
+  <div class="auth-icons icon-thermo">🌡️</div>
+  <div class="auth-icons icon-scale">⚖️</div>
+  <div class="auth-icons icon-beaker">🧪</div>
+
+  <div class="from-container">
+    <div class="auth-brand">
+      <h1>Quantity Measurement App</h1>
+      <p>Convert, compare and calculate quantities with ease</p>
     </div>
 
-    <div class="f-group">
-      <label>{{ isLoginMode ? 'Email or Username' : 'Email' }}</label>
-      <input
-        [type]="isLoginMode ? 'text' : 'email'"
-        [(ngModel)]="authData.email"
-        name="email"
-        required
-        (input)="clearMessages()"
-      />
+    <div class="choose-option">
+      <button type="button" [class.active]="isLoginMode" (click)="switchMode(true)">Login</button>
+      <button type="button" [class.active]="!isLoginMode" (click)="switchMode(false)">
+        Signup
+      </button>
     </div>
 
-    <div class="f-group">
-      <label>Password</label>
-      <input
-        type="password"
-        [(ngModel)]="authData.password"
-        name="password"
-        required
-        (input)="clearMessages()"
-      />
+    <form (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="f-group" *ngIf="!isLoginMode">
+        <label>Username</label>
+        <input
+          type="text"
+          [(ngModel)]="authData.username"
+          name="username"
+          placeholder="Enter your username"
+          required
+          (input)="clearMessages()"
+        />
+      </div>
+
+      <div class="f-group">
+        <label>{{ isLoginMode ? 'Email or Username' : 'Email' }}</label>
+        <input
+          [type]="isLoginMode ? 'text' : 'email'"
+          [(ngModel)]="authData.email"
+          name="email"
+          [placeholder]="isLoginMode ? 'Enter username or email' : 'example@gmail.com'"
+          required
+          (input)="clearMessages()"
+        />
+      </div>
+
+      <div class="f-group">
+        <label>Password</label>
+        <input
+          type="password"
+          [(ngModel)]="authData.password"
+          name="password"
+          required
+          placeholder="Enter your password"
+          (input)="clearMessages()"
+        />
+      </div>
+
+      <div class="f-group" *ngIf="!isLoginMode">
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          [(ngModel)]="authData.confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm your password"
+          required
+          (input)="clearMessages()"
+        />
+      </div>
+
+      <div *ngIf="errorMessage" class="error-alert">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="success-alert">{{ successMessage }}</div>
+
+      <button type="submit" class="submit-btn">
+        {{ isLoginMode ? 'Login' : 'Create Account' }}
+      </button>
+    </form>
+
+    <div class="divider">
+      <span>OR</span>
     </div>
 
-    <div class="f-group" *ngIf="!isLoginMode">
-      <label>Confirm Password</label>
-      <input
-        type="password"
-        [(ngModel)]="authData.confirmPassword"
-        name="confirmPassword"
-        required
-        (input)="clearMessages()"
-      />
-    </div>
-
-    <div *ngIf="errorMessage" class="error-alert">{{ errorMessage }}</div>
-    <div *ngIf="successMessage" class="success-alert">{{ successMessage }}</div>
-
-    <button type="submit" class="submit-btn">
-      {{ isLoginMode ? 'Login' : 'Create Account' }}
+    <button type="button" class="google-btn" (click)="loginWithGoogle()">
+      <img src="/google-icon.png" alt="Google" class="google-icon-img" />
+      <span>Continue with Google</span>
     </button>
-  </form>
-
-  <div class="divider">
-    <span>OR</span>
   </div>
-
-  <button type="button" class="google-btn" (click)="loginWithGoogle()">
-    <img src="/google-icon.png" alt="Google" class="google-icon-img" />
-    <span>Continue with Google</span>
-  </button>
 </div>
