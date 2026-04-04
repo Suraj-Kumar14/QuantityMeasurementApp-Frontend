@@ -64,11 +64,17 @@ export class DashboardComponent implements OnInit {
   setType(type: string) {
     this.selectedType = type;
     this.updateUnits();
+    this.result = null;
+    this.error = null;
   }
 
   setAction(action: string) {
     this.selectedAction = action;
     this.isArithmeticMode = action === 'add' || action === 'subtract' || action === 'divide';
+
+    if (action === 'convert') {
+      this.calc.val2 = 0;
+    }
 
     if (this.isArithmeticMode) {
       this.calc.operator = action;
@@ -89,7 +95,7 @@ export class DashboardComponent implements OnInit {
         measurementType: this.selectedType,
       },
       thatQuantityDTO: {
-        value: this.calc.val2,
+        value: this.selectedAction === 'convert' ? 0 : this.calc.val2,
         unit: this.calc.unit2,
         measurementType: this.selectedType,
       },
