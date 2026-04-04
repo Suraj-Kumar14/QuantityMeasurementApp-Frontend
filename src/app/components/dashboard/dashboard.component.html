@@ -11,7 +11,6 @@
 
 <div class="main-wrapper">
   <div class="container">
-
     <div *ngIf="error" class="error-banner">
       {{ error }}
     </div>
@@ -19,22 +18,38 @@
     <section class="section choose-type-section">
       <h3 class="section-title">CHOOSE TYPE</h3>
       <div class="type-grid">
-        <div class="type-card" [class.active]="selectedType === 'LengthUnit'" (click)="setType('LengthUnit')">
+        <div
+          class="type-card"
+          [class.active]="selectedType === 'LengthUnit'"
+          (click)="setType('LengthUnit')"
+        >
           <div class="icon-box length-icon">📏</div>
           <span>Length</span>
         </div>
 
-        <div class="type-card" [class.active]="selectedType === 'WeightUnit'" (click)="setType('WeightUnit')">
+        <div
+          class="type-card"
+          [class.active]="selectedType === 'WeightUnit'"
+          (click)="setType('WeightUnit')"
+        >
           <div class="icon-box weight-icon">⚖️</div>
           <span>Weight</span>
         </div>
 
-        <div class="type-card" [class.active]="selectedType === 'TemperatureUnit'" (click)="setType('TemperatureUnit')">
+        <div
+          class="type-card"
+          [class.active]="selectedType === 'TemperatureUnit'"
+          (click)="setType('TemperatureUnit')"
+        >
           <div class="icon-box temp-icon">🌡️</div>
           <span>Temperature</span>
         </div>
 
-        <div class="type-card" [class.active]="selectedType === 'VolumeUnit'" (click)="setType('VolumeUnit')">
+        <div
+          class="type-card"
+          [class.active]="selectedType === 'VolumeUnit'"
+          (click)="setType('VolumeUnit')"
+        >
           <div class="icon-box volume-icon">🥤</div>
           <span>Volume</span>
         </div>
@@ -44,11 +59,19 @@
     <section class="section choose-action-section">
       <h3 class="section-title">CHOOSE ACTION</h3>
       <div class="action-grid">
-        <button class="action-btn" [class.active]="selectedAction === 'compare'" (click)="setAction('compare')">
+        <button
+          class="action-btn"
+          [class.active]="selectedAction === 'compare'"
+          (click)="setAction('compare')"
+        >
           Comparison
         </button>
 
-        <button class="action-btn" [class.active]="selectedAction === 'convert'" (click)="setAction('convert')">
+        <button
+          class="action-btn"
+          [class.active]="selectedAction === 'convert'"
+          (click)="setAction('convert')"
+        >
           Conversion
         </button>
 
@@ -60,10 +83,9 @@
 
     <div class="calculator-card">
       <div class="input-group">
-
         <div class="input-field">
           <label>VALUE 1</label>
-          <input type="number" [(ngModel)]="calc.val1">
+          <input type="number" [(ngModel)]="calc.val1" />
           <select [(ngModel)]="calc.unit1">
             <option *ngFor="let unit of units[selectedType]" [value]="unit">{{ unit }}</option>
           </select>
@@ -83,7 +105,7 @@
 
         <div class="input-field">
           <label>VALUE 2</label>
-          <input type="number" [(ngModel)]="calc.val2">
+          <input type="number" [(ngModel)]="calc.val2" />
           <select [(ngModel)]="calc.unit2">
             <option *ngFor="let unit of units[selectedType]" [value]="unit">{{ unit }}</option>
           </select>
@@ -95,11 +117,10 @@
       <div *ngIf="result" class="result-display">
         <label>RESULT</label>
         <div class="result-row">
-          <h2>{{ result.resultValue | number:'1.1-3' }}</h2>
+          <h2>{{ result.resultValue | number: '1.1-3' }}</h2>
           <span id="result-unit-label">{{ result.resultUnit }}</span>
         </div>
       </div>
     </div>
-
   </div>
 </div>
