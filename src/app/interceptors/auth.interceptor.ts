@@ -1,8 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const isAuthEndpoint =
-    req.url.includes('/auth/signup') || req.url.includes('/auth/login');
+  const isAuthEndpoint = req.url.includes('/auth/register') || req.url.includes('/auth/login');
 
   if (isAuthEndpoint) {
     return next(req);
@@ -13,8 +12,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   if (token) {
     const cloned = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
     return next(cloned);
   }
