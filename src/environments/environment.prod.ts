@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  gatewayUrl: 'http://localhost:8080',
+  gatewayUrl: 'https://quantitymeasurementapp-production-ee5b.up.railway.app',
 };
