@@ -25,8 +25,8 @@ export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
 
-  private apiUrl = '${environment.gatewayUrl}/auth';
-  private backendBaseUrl = '${environment.gatewayUrl}';
+  private apiUrl = `${environment.gatewayUrl}/auth`;
+  private backendBaseUrl = `${environment.gatewayUrl}`;
 
   register(userData: RegisterRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/register`, userData).pipe(
@@ -52,6 +52,10 @@ export class AuthService {
 
   loginWithGoogle(): void {
     window.location.href = `${this.backendBaseUrl}/oauth2/authorization/google`;
+  }
+
+  loginWithGithub(): void {
+    window.location.href = `${environment.gatewayUrl}/oauth2/authorization/github`;
   }
 
   handleGoogleToken(token: string): void {

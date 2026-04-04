@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class MeasurementService {
   private http = inject(HttpClient);
-  private apiUrl = '${environment.gatewayUrl}/api/v1/quantities';
+  private apiUrl = `${environment.gatewayUrl}/api/v1/quantities`;
 
   compare(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/compare`, data);
