@@ -74,6 +74,10 @@ export class AuthComponent implements OnInit {
     this.authService.loginWithGoogle();
   }
 
+  loginWithGithub() {
+    this.authService.loginWithGithub();
+  }
+
   private isValidUsername(username: string): boolean {
     return /^(?=.*[A-Z])(?=.*[a-z]).+$/.test(username);
   }
