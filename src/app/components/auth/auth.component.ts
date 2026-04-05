@@ -27,37 +27,31 @@ export class AuthComponent implements OnInit {
     confirmPassword: '',
   };
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       const token = params['token'];
       const oauth2 = params['oauth2'];
 
-      if (token && oauth2 === 'success') {
-        this.authService.handleGoogleToken(token);
-        this.successMessage = 'Google login successful! Redirecting...';
+      if (token) {
+        this.authService.handleOAuthToken(token);
+
+        if (oauth2 === 'github') {
+          this.successMessage = 'GitHub login successful! Redirecting...';
+        } else if (oauth2 === 'google') {
+          this.successMessage = 'Google login successful! Redirecting...';
+        } else {
+          this.successMessage = 'Login successful! Redirecting...';
+        }
 
         setTimeout(() => {
           this.router.navigate(['/dashboard']);
         }, 1000);
+
+        return;
       }
-    });
-  }
 
-  OnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      const token = params['token'];
-      const oauth2 = params['oauth2'];
-
-      if (token && oauth2 === 'success') {
-        this.authService.handleGoogleToken(token);
-        this.successMessage = 'Google login successful! Redirecting...';
-
-        this.authService.handleGithubToken(token);
-        this.successMessage = 'Github login successful! Redirecting...';
-
-        setTimeout(() => {
-          this.router.navigate(['/dashboard']);
-        }, 1000);
+      if (oauth2 === 'failed') {
+        this.errorMessage = 'OAuth login failed. Please try again.';
       }
     });
   }
@@ -93,7 +87,7 @@ export class AuthComponent implements OnInit {
     this.authService.loginWithGoogle();
   }
 
-  loginWithGithub() {
+  loginWithGithub(): void {
     this.clearMessages();
     this.authService.loginWithGithub();
   }
