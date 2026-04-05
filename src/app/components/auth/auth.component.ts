@@ -31,6 +31,7 @@ export class AuthComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       const token = params['token'];
       const oauth2 = params['oauth2'];
+      const error = params['error'];
 
       if (token) {
         this.authService.handleOAuthToken(token);
@@ -45,13 +46,15 @@ export class AuthComponent implements OnInit {
 
         setTimeout(() => {
           this.router.navigate(['/dashboard']);
-        }, 1000);
+        }, 500);
 
         return;
       }
 
       if (oauth2 === 'failed') {
-        this.errorMessage = 'OAuth login failed. Please try again.';
+        this.errorMessage = error
+          ? decodeURIComponent(error)
+          : 'OAuth login failed. Please try again.';
       }
     });
   }
