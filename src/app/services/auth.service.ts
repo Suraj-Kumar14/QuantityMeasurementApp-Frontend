@@ -62,6 +62,10 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
+  handleGithubToken(token: string): void {
+    localStorage.setItem('token', token);
+  }
+
   logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/auth']);
