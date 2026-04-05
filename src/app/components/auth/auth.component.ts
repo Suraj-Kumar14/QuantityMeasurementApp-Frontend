@@ -43,6 +43,25 @@ export class AuthComponent implements OnInit {
     });
   }
 
+  OnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      const token = params['token'];
+      const oauth2 = params['oauth2'];
+
+      if (token && oauth2 === 'success') {
+        this.authService.handleGoogleToken(token);
+        this.successMessage = 'Google login successful! Redirecting...';
+
+        this.authService.handleGithubToken(token);
+        this.successMessage = 'Github login successful! Redirecting...';
+
+        setTimeout(() => {
+          this.router.navigate(['/dashboard']);
+        }, 1000);
+      }
+    });
+  }
+
   clearMessages(): void {
     this.errorMessage = '';
     this.successMessage = '';
@@ -75,6 +94,7 @@ export class AuthComponent implements OnInit {
   }
 
   loginWithGithub() {
+    this.clearMessages();
     this.authService.loginWithGithub();
   }
 
