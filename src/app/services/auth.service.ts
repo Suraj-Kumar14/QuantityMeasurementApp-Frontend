@@ -50,12 +50,12 @@ export class AuthService {
     );
   }
 
-  loginWithGoogle(): void {
+  loginWithGoogle() {
     window.location.href = `${this.backendBaseUrl}/oauth2/authorization/google`;
   }
 
-  loginWithGithub(): void {
-    window.location.href = `${environment.gatewayUrl}/oauth2/authorization/github`;
+  loginWithGithub() {
+    window.location.href = `${this.backendBaseUrl}/oauth2/authorization/github`;
   }
 
   handleGoogleToken(token: string): void {
@@ -66,7 +66,11 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
-  logout(): void {
+  handleOAuthToken(token: string): void {
+    localStorage.setItem('token', token);
+  }
+
+  logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/auth']);
   }
