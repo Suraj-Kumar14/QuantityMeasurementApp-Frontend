@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   router = inject(Router);
 
   welcomeUsername: string | null = null;
+  isMenuOpen = false;
 
   selectedType = 'LengthUnit';
   selectedAction = 'add';
@@ -42,9 +43,37 @@ export class DashboardComponent implements OnInit {
     operator: 'add',
   };
 
+  get isTemperatureSelected(): boolean {
+    return this.selectedType === 'TemperatureUnit';
+  }
+
   ngOnInit() {
     this.updateUnits();
-    this.welcomeUsername = this.authService.getUsernameFromToken();
+    this.welcomeUsername = this.getFirstName(this.authService.getUsernameFromToken());
+  }
+
+  private getFirstName(fullName: string | null): string | null {
+    if (!fullName) return null;
+
+    const cleanedName = fullName.trim();
+    if (!cleanedName) return null;
+
+    return cleanedName.split(' ')[0];
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    if (window.innerWidth > 768) {
+      this.closeMenu();
+    }
   }
 
   goToHistory() {
@@ -64,11 +93,24 @@ export class DashboardComponent implements OnInit {
   setType(type: string) {
     this.selectedType = type;
     this.updateUnits();
+
+    if (this.selectedType === 'TemperatureUnit') {
+      this.selectedAction = 'convert';
+      this.isArithmeticMode = false;
+      this.calc.operator = 'add';
+      this.calc.val2 = 0;
+    }
+
     this.result = null;
     this.error = null;
   }
 
   setAction(action: string) {
+    if (this.selectedType === 'TemperatureUnit' && action !== 'convert') {
+      this.error = 'For Temperature, only conversion is available right now.';
+      return;
+    }
+
     this.selectedAction = action;
     this.isArithmeticMode = action === 'add' || action === 'subtract' || action === 'divide';
 
@@ -87,6 +129,11 @@ export class DashboardComponent implements OnInit {
   calculate() {
     this.error = null;
     this.result = null;
+
+    if (this.selectedType === 'TemperatureUnit' && this.selectedAction !== 'convert') {
+      this.error = 'For Temperature, only conversion is available right now.';
+      return;
+    }
 
     const baseBody: any = {
       thisQuantityDTO: {
